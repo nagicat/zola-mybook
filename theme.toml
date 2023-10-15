@@ -1,0 +1,6 @@
+name = "mybook"
+description = "Person blog theme."
+license = "MIT"
+min_version = "0.0.1"
+homepage = "https://github.com/nagicat/mybook"
+demo = "https://mybook-demo.pages.dev/"

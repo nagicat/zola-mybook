@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="postBody">
+
+  <h3>Categories</h3>
+  {% set categories = get_taxonomy(kind="categories") %}
+  {% for term in categories.items %}
+      <a href="{{ term.permalink }}">/{{ term.name }}({{ term.pages | length }})</a>&nbsp;
+  {% endfor %}
+
+  <h3>Tags</h3>
+  {% set tags = get_taxonomy(kind="tags") %}
+  {% for term in tags.items %}
+    <a href="{{ term.permalink }}">#{{ term.name }}({{ term.pages | length }})</a>&nbsp;
+  {% endfor %}
+
+{% for year, posts in section.pages | group_by(attribute="year") %}
+    <h1>{{ year }}</h1>
+
+    {% for post in posts %}
+    <a class="post_card" href="{{ post.permalink }}">
+      <span class="post_title">{{ post.title }}</span>
+      <span class="post_date">{{ post.date }}</span>
+      <span class="post_category">Category: 
+        {% if post.taxonomies.categories %}
+          {% for category in post.taxonomies.categories %}
+            &emsp;/{{ category }}
+          {% endfor %}
+        {% endif %}
+      </span>
+      <span class="post_tags">Tags: 
+        {% if post.taxonomies.tags %}
+          {% for tag in post.taxonomies.tags %}
+            &emsp;#{{ tag }}
+          {% endfor %}
+        {% endif %}
+      </span>
+    </a>
+    {% endfor %}
+    
+{% endfor %}
+
+</div>
+
+{% endblock content %}

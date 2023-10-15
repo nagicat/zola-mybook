@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>{{ page.title }} | {{ config.title }}</title>
+{% endblock %}
+
+{% block content %}
+
+<div id="postInfo">
+  <h1 id="headline">{{ page.title }}</h1>
+  <div id="postMeta">
+      <div id="postDate">
+          <span>Update: {{ page.date }}</span>
+      </div>
+      <div>
+        {% if page.taxonomies.categories %}
+          <span>Category: 
+            {% for category in page.taxonomies.categories %}
+              &nbsp;<a href="{{ get_taxonomy_url(kind="categories", name=category) | safe }}">/{{ category }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+      <div>
+        {% if page.taxonomies.tags %}
+          <span>Tags: 
+            {% for tag in page.taxonomies.tags %}
+              &nbsp;<a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">#{{ tag }}</a>
+            {% endfor %}
+          </span>
+        {% endif %}
+      </div>
+  </div>
+</div>
+
+<div id="postBody">
+  {{ page.content | safe }}
+</div>
+
+{% set fab_section = get_section(path="posts/_index.md") %}
+{% set num_posts = fab_section | length %}
+{% if num_posts > 1 %}
+<div id="postBaf">
+  {% if page.higher %}
+    <a class="baf_content" href="{{ page.higher.permalink }}">
+      <span class="baf_prev">« Prev</span><br>
+      <span class="baf_title">{{ page.higher.title }}</span>
+    </a>
+  {% endif %}
+  {% if page.lower %}
+    <a class="baf_content" href="{{ page.lower.permalink }}">
+      <span class="baf_next">Next »</span><br>
+      <span class="baf_title">{{ page.lower.title }}</span>
+    </a>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if page.extra.math %}
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']]
+    }
+  };
+</script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+</script>
+{% endif %}
+
+{% endblock content %}

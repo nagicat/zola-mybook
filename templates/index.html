@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="postBody">
+
+  <h1>最新投稿</h1>
+
+  {% set section = get_section(path="posts/_index.md") %}
+  {% for page in section.pages %}
+    {% if loop.index0 == config.extra.home_display_posts %}{% break %}{% endif %}
+    <a class="post_card" href="{{ page.permalink | safe }}">
+      <span class="post_title">{{ page.title }}</span>
+      <span class="post_date">{{ page.date }}</span>
+    </a>
+  {% endfor %}
+
+  <p>
+    &emsp;<a href="/posts">>archives</a>
+  </p>
+
+</div>
+
+{% endblock content %}

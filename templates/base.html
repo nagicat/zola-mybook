@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="{{ config.default_language }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <script>
+
+        function themeUpdate() {
+            const isDark = ( () => {
+                const ssKey = sessionStorage.getItem("isDark");
+                console.log(ssKey);
+
+                if ( ssKey === null ) {
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+                } else {
+                    if ( ssKey === "true" ) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            } )();
+
+            console.log(isDark);
+
+            if ( isDark ) {
+                // to dark
+                document.documentElement.style.setProperty('--BACK_COLOR','var(--BLACK)');
+                document.documentElement.style.setProperty('--TEXT_COLOR','var(--WHITE)');
+            } else {
+                // to light
+                document.documentElement.style.setProperty('--BACK_COLOR','var(--WHITE)');
+                document.documentElement.style.setProperty('--TEXT_COLOR','var(--BLACK)');
+            }
+        }
+
+        function themeChange() {
+            const isDark = ( () => {
+                const ssKey = sessionStorage.getItem("isDark");
+                console.log(ssKey);
+
+                if ( ssKey === null ) {
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+                } else {
+                    if ( ssKey === "true" ) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            } )();
+
+            console.log(isDark);
+
+            if ( isDark ) {
+                // to light
+                sessionStorage.setItem("isDark", "false");
+                themeUpdate();
+            } else {
+                // to dark
+                sessionStorage.setItem("isDark", "true");
+                themeUpdate();
+            }
+        }
+
+        addEventListener("DOMContentLoaded", () => {
+            themeUpdate();
+
+            document.getElementById("themeSwitch").addEventListener( "click", () => {
+                themeChange();            
+                } );
+            });
+
+    </script>
+    {% block title %}
+    <title>{{ config.title }}</title>
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <div>
+            <a class="header_title" href="/">{{ config.title }}</a>
+            <span id="themeSwitch">☀</span>
+        </div>
+        <div>
+            <div class="menu">
+                <a href="/about">About</a>
+                <a href="/posts">記事一覧</a>
+                <a href="/tags">タグ一覧</a>
+            </div>
+        </div>
+    </header>
+
+    <div id="main">
+        {% block content %}
+        <div id="postBody">
+            Null.
+        </div>
+        {% endblock %}
+    </div>
+
+    <footer>
+        <div>
+            <span>&copy; {{ config.title }}.</span>
+            <span>|</span>
+            <span>Theme: <a href="https://github.com/nagicat/mybook">mybook</a></span>
+        </div>
+    </footer>
+</body>
+</html>
