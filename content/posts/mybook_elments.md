@@ -106,5 +106,5 @@ if ( true ) {
 文章中に、任意の1:1比率の画像{{ inlineimg(src="/emoji/blobcat_smirk.webp", alt="blobcat_smirk") }}を挿入できます。
 
 ```md
-{{ /* inlineimg(src="/emoji/blobcat_smirk.webp", alt="blobcat_smirk") */}}
+{{/* inlineimg(src="/emoji/blobcat_smirk.webp", alt="blobcat_smirk") */}}
 ```
