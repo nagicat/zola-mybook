@@ -179,7 +179,7 @@ h1, h2, h3, h4, h5, h6, div, p, span:not(#postBody pre code span), a {
     font-size: 12px;
 }
 
-#postBody img, #postBody video {
+#postBody img:not(#postBody .inline_img), #postBody video {
     background-color: var(--SPACE_COLOR);
     width: 100%;
     border-radius: 4px;
@@ -354,6 +354,15 @@ h1, h2, h3, h4, h5, h6, div, p, span:not(#postBody pre code span), a {
     overflow: hidden;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+}
+
+#postBody .inline_img {
+    display: inline-block;
+    width: 1em;
+    margin: 0;
+    vertical-align: middle;
+    aspect-ratio: 1/1;
+    object-fit: contain;
 }
 
 #postBaf {

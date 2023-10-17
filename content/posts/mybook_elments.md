@@ -101,3 +101,10 @@ if ( true ) {
 ```md
 {{/* linkcard(title="タイトルがここに表示されます。タイトルは2行まで表示され、それ以降は省略されます。", link="") */}}
 ```
+
+## {{ inlineimg(src="/emoji/ablobcat_box.webp", alt="blobcat_box") }}インラインイメージ
+文章中に、任意の1:1比率の画像{{ inlineimg(src="/emoji/blobcat_smirk.webp", alt="blobcat_smirk") }}を挿入できます。
+
+```md
+{{ /* inlineimg(src="/emoji/blobcat_smirk.webp", alt="blobcat_smirk") */}}
+```
