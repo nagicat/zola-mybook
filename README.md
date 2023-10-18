@@ -1,6 +1,10 @@
 # myBook - Zola theme
 mybookは、個人ブログ向けのZolaテーマです。
 
+## Demo
+[mybook-demo.pages.dev](https://mybook-demo.pages.dev/)
+![](./theme_img.jpg)
+
 ## ✨Features
 - dark & light theme.
 - mobile friendly.
@@ -24,8 +28,6 @@ math = true
 #### home_display_posts
 トップページに表示される最新投稿順で表示される記事数を指定します。
 
-
-// ToDo
 ### Accent color
 デフォルトでは青系のカラーが設定されています。これを変更するには、`.static/css/style.css`の`--ACCENT_COLOR`を変更してください。
 
@@ -54,10 +56,14 @@ Faviconは`/static`下に`favicon.ico`を設置してください。
 - テーマを目に優しい色合いに調整
 - 文字の誤植を修正
 
-### v0.0.1 / 2023-10-15
+### v0.0.1 / 2023-10-17
 - ポストカードのスタイル崩れを修正
 - ポストカードのスタイルを変更
 - リンクカードのスタイルを変更
+- インラインイメージ要素を追加
+
+### v0.0.2 / 2023-10-18
+- スペースブロックを追加
 
 ### Futures
 - PWA対応
