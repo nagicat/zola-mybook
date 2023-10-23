@@ -75,6 +75,7 @@ header {
     min-height: 48px;
     margin-top: 16px;
     user-select: none;
+    overflow-x: hidden; /* preliminary */
 }
 
 header .header_content {
@@ -104,7 +105,7 @@ header .menu a {
     font-size: 16px;
     font-weight: bold;
     white-space: nowrap;
-    max-width: 90vw; /* :( */
+    max-width: 90vw; /* preliminary */
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -163,8 +164,20 @@ h1, h2, h3, h4, h5, h6, div, p, span:not(#postBody pre code span), a {
 }
 
 #postBody h4, #postBody h5, #postBody h6 {
-    padding-left: 8px;
-    border-left: solid 2px var(--ACCENT_COLOR);
+    position: relative;
+    padding-left: 6px;
+    /*border-left: solid 2px var(--ACCENT_COLOR);*/
+}
+
+#postBody h4::after, #postBody h5::after, #postBody h6::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--ACCENT_COLOR);
+    width: 4px;
+    aspect-ratio: 1/2;
 }
 
 #postBody h4 {
@@ -177,6 +190,16 @@ h1, h2, h3, h4, h5, h6, div, p, span:not(#postBody pre code span), a {
 
 #postBody h6 {
     font-size: 12px;
+}
+
+#postBody p, #postBody blockquote, #postBody, span {
+    line-height: 2em;
+    letter-spacing: 0.05em;
+}
+
+#postBody p {
+    margin-bottom: 32px;
+    font-size: 18px;
 }
 
 #postBody img:not(#postBody .inline_img), #postBody video {
@@ -313,8 +336,8 @@ h1, h2, h3, h4, h5, h6, div, p, span:not(#postBody pre code span), a {
     min-width: 120px;
     padding: 8px 16px;
     border: none;
-    border-left: 2px solid var(--TEXT_COLOR);
-    border-top: 2px solid var(--TEXT_COLOR);
+    border-left: 1px solid var(--TEXT_COLOR);
+    border-top: 1px solid var(--TEXT_COLOR);
     text-align: left;
 }
 
